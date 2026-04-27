@@ -1,8 +1,7 @@
-import React, { memo } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/auth/login/LoginScreen';
 import SignupScreen from '../screens/auth/register/RegisterScreen';
+import { memo } from 'react';
 
 const AuthStack = createNativeStackNavigator();
 
@@ -15,25 +14,4 @@ const AuthStackNavigator: React.FC = memo(() => {
   );
 });
 
-const AppStack = createNativeStackNavigator();
-
-const AppStackScreen: React.FC = memo(() => {
-  return (
-    <AppStack.Navigator>
-      <AppStack.Screen
-        name="AUTH"
-        component={AuthStackNavigator}
-      />
-    </AppStack.Navigator>
-  );
-});
-
-const RootNavigators: React.FC = () => {
-  return (
-    <NavigationContainer>
-      <AppStackScreen />
-    </NavigationContainer>
-  );
-};
-
-export default RootNavigators;
+export default AuthStackNavigator;

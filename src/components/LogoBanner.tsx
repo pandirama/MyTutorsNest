@@ -1,11 +1,22 @@
 import React, { memo } from 'react';
+import Logo from '../assets/images/logo.svg';
+import { scale, verticalScale } from 'react-native-size-matters';
+import { StyleSheet } from 'react-native';
 
 const LogoBanner: React.FC = memo(() => {
   return (
-    <div className="flex items-center justify-center h-16 bg-gray-200">
-      <h1 className="text-xl font-bold text-gray-800">MyTutorsNest</h1>
-    </div>
+    <Logo
+      width={scale(180)}
+      height={verticalScale(180)}
+      style={styles.logoImage}
+    />
   );
+});
+
+const styles = StyleSheet.create({
+  logoImage: {
+    alignSelf: 'center',
+  },
 });
 
 export default LogoBanner;
