@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   loginText: {
     fontSize: moderateScale(20),
   },
-  submitBtn: {
+  termsContainer: {
     marginTop: verticalScale(40),
   },
 });

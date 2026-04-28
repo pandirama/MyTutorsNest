@@ -10,6 +10,10 @@ import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
 import RootNavigators from './src/navigation/RootNavigator';
 
+if (__DEV__) {
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
+}
+
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
 

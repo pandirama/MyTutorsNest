@@ -28,8 +28,8 @@ const FormCheckbox = <T extends FieldValues>({
             {value && (
               <Ionicons
                 name="checkmark"
-                size={moderateScale(16)}
-                color={value ? palette.red : palette.lightGray}
+                size={moderateScale(14)}
+                color={value ? palette.primary : palette.lightGray}
               />
             )}
           </View>

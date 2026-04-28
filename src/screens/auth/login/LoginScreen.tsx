@@ -15,7 +15,7 @@ type FormData = {
   email: string;
   password: string;
   termscondition: boolean;
-  user: string;
+  userType: string;
 };
 
 const options = [
@@ -37,7 +37,7 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
       email: '',
       password: '',
       termscondition: false,
-      user: '',
+      userType: 'tutor',
     },
   });
 
@@ -61,8 +61,7 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
     <View style={commonStyles.container}>
       <LogoBanner />
       <View>
-        <Text style={styles.loginText}>{LOGIN_SCREEN.LOGIN_TEXT}</Text>
-        <FormRadioGroup control={control} name="user" options={options} />
+        <FormRadioGroup control={control} name="userType" options={options} label='I am'/>
         <FormInput
           control={control}
           name="email"

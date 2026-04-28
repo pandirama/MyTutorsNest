@@ -17,7 +17,7 @@ type FormData = {
   email: string;
   password: string;
   termscondition: boolean;
-  user: string;
+  userType: string;
 };
 
 const options = [
@@ -39,7 +39,7 @@ const RegisterScreen: React.FC = () => {
       email: '',
       password: '',
       termscondition: false,
-      user: '',
+      userType: 'tutor',
     },
   });
 
@@ -56,7 +56,12 @@ const RegisterScreen: React.FC = () => {
       <BackHeader containerStyle={styles.back} />
       <LogoBanner />
       <View>
-        <FormRadioGroup control={control} name="user" options={options} />
+        <FormRadioGroup
+          control={control}
+          name="userType"
+          options={options}
+          label="I am..."
+        />
         <FormInput
           control={control}
           name="email"
@@ -73,13 +78,15 @@ const RegisterScreen: React.FC = () => {
           returnKeyType="done"
           rules={loginRules.password}
         />
-        <FormCheckbox control={control} name="termscondition" label="terms" />
-        <TouchableOpacity
-          style={[commonStyles.button, styles.submitBtn]}
-          onPress={handleSubmit(onSubmit)}
-        >
-          <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>
-        </TouchableOpacity>
+        <View style={styles.termsContainer}>
+          <FormCheckbox control={control} name="termscondition" label="terms" />
+          <TouchableOpacity
+            style={commonStyles.button}
+            onPress={handleSubmit(onSubmit)}
+          >
+            <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

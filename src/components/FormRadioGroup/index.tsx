@@ -5,6 +5,8 @@ import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
+import palette from '../../theme/palette';
+import { moderateScale } from 'react-native-size-matters';
 
 type Option = {
   label: string;
@@ -18,56 +20,56 @@ type Props<T extends FieldValues> = {
   label?: string;
 };
 
-function FormRadioGroup<T extends FieldValues>({
+const FormRadioGroup = <T extends FieldValues>({
   control,
   name,
   label,
   options,
-}: Props<T>) {
+}: Props<T>) => {
   return (
     <Controller
       control={control}
       name={name}
-      render={({ field: { value = 'tutor', onChange } }) => (
+      render={({ field: { value = name, onChange } }) => (
         <View style={styles.container}>
           {label && <Text style={styles.groupLabel}>{label}</Text>}
+          <View style={styles.subContainer}>
+            {options.map(item => {
+              const selected = value === item.value;
+              return (
+                <TouchableOpacity
+                  key={item.value.toString()}
+                  style={styles.row}
+                  onPress={() => onChange(item.value)}
+                  activeOpacity={0.8}
+                >
+                  <View style={styles.outerCircle}>
+                    {selected && (
+                      <Ionicons
+                        name="radio-button-on"
+                        size={moderateScale(18)}
+                        color={palette.primary}
+                      />
+                    )}
 
-          {options.map(item => {
-            const selected = value === item.value;
+                    {!selected && (
+                      <Ionicons
+                        name="radio-button-off"
+                        size={moderateScale(18)}
+                        color={palette.gray}
+                      />
+                    )}
+                  </View>
 
-            return (
-              <TouchableOpacity
-                key={item.value.toString()}
-                style={styles.row}
-                onPress={() => onChange(item.value)}
-                activeOpacity={0.8}
-              >
-                <View style={styles.outerCircle}>
-                  {selected && (
-                    <Ionicons
-                      name="radio-button-on"
-                      size={22}
-                      color="#2563EB"
-                    />
-                  )}
-
-                  {!selected && (
-                    <Ionicons
-                      name="radio-button-off"
-                      size={22}
-                      color="#9CA3AF"
-                    />
-                  )}
-                </View>
-
-                <Text style={styles.optionText}>{item.label}</Text>
-              </TouchableOpacity>
-            );
-          })}
+                  <Text style={styles.optionText}>{item.label}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
         </View>
       )}
     />
   );
-}
+};
 
 export default FormRadioGroup;

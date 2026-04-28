@@ -1,15 +1,16 @@
 import { StyleSheet } from 'react-native';
-import { scale, verticalScale } from 'react-native-size-matters';
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import palette from '../../theme/palette';
 
 export default StyleSheet.create({
   container: {
     marginVertical: verticalScale(10),
+  },
+  subContainer: {
     flexDirection: 'row',
   },
   groupLabel: {
-    fontSize: 15,
-    fontWeight: '600',
-    marginBottom: verticalScale(10),
+    fontSize: moderateScale(15),
   },
   row: {
     flexDirection: 'row',
@@ -20,7 +21,7 @@ export default StyleSheet.create({
     marginRight: scale(10),
   },
   optionText: {
-    fontSize: 15,
-    color: '#111827',
+    fontSize: moderateScale(15),
+    color: palette.black,
   },
 });

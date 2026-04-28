@@ -3,6 +3,7 @@ const palette = {
     secondary:'#FBBE13',
     white:'#FFFFFF',
     black:'#000000',
+    gray:'#808080',
     lightGray:'#D3D3D3',
     red:'red'
 }
