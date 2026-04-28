@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   registerText: {
     fontSize: moderateScale(14),
     color: palette.primary,
+    marginLeft: scale(5),
   },
 });
 

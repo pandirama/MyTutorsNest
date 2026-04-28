@@ -90,9 +90,9 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
           <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>
         </TouchableOpacity>
         <View style={styles.registerView}>
-          <Text style={styles.registerUseText}>Don't have account please </Text>
+          <Text style={styles.registerUseText}>Don’t have account?</Text>
           <TouchableOpacity onPress={onRegister}>
-            <Text style={styles.registerText}>register </Text>
+            <Text style={styles.registerText}>SIGN UP</Text>
           </TouchableOpacity>
         </View>
       </View>
