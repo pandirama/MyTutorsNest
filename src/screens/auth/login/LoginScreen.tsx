@@ -61,11 +61,11 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
     <View style={commonStyles.container}>
       <LogoBanner />
       <View>
-        <FormRadioGroup control={control} name="userType" options={options} label='I am'/>
+        <FormRadioGroup control={control} name="userType" options={options} label='I am a...'/>
         <FormInput
           control={control}
           name="email"
-          placeholder={LOGIN_SCREEN.EMAIL_INPUT_TEXT}
+          label={LOGIN_SCREEN.EMAIL_INPUT_TEXT}
           rules={loginRules.email}
           keyboardType="email-address"
           returnKeyType="next"
@@ -73,7 +73,7 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
         <FormInput
           control={control}
           name="password"
-          placeholder={LOGIN_SCREEN.PASSWORD_INPUT_TEXT}
+          label={LOGIN_SCREEN.PASSWORD_INPUT_TEXT}
           secureTextEntry
           returnKeyType="done"
           rules={loginRules.password}

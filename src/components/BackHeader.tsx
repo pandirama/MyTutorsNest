@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   title?: string;
@@ -19,10 +20,9 @@ const BackHeader = ({ title, rightIcon, containerStyle }: Props) => {
   return (
     <View style={[styles.header, containerStyle]}>
       <TouchableOpacity onPress={onBack}>
-        <Text>Back</Text>
+        <Ionicons name="arrow-back" size={moderateScale(20)} />
       </TouchableOpacity>
       {title && <Text style={styles.titleTxt}>{title}</Text>}
-      <Text style={styles.titleTxt}>{title}</Text>
       {rightIcon && <TouchableOpacity>right</TouchableOpacity>}
     </View>
   );

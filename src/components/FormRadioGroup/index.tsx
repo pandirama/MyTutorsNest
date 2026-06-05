@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import palette from '../../theme/palette';

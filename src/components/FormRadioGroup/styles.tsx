@@ -25,7 +25,7 @@ export default StyleSheet.create({
   optionText: {
     fontSize: moderateScale(15),
     color: palette.black,
-    fontFamily: fontFamily[500],
+    fontFamily: fontFamily[700],
   },
   selectedOptionText: {
     fontFamily: fontFamily[700],
