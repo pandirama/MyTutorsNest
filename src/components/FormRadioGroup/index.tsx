@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
-import palette from '../../theme/palette';
+import { palette } from '../../theme/palette';
 import { moderateScale } from 'react-native-size-matters';
 
 type Option = {
@@ -70,4 +70,4 @@ const FormRadioGroup = <T extends FieldValues>({
   );
 };
 
-export default FormRadioGroup;
+export default memo(FormRadioGroup);

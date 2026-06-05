@@ -4,12 +4,12 @@ import styles from './styles';
 import { COMMON, LOGIN_SCREEN } from '../../../utils/constants';
 import commonStyles from '../../../theme/commonStyles';
 import { useForm } from 'react-hook-form';
-import { loginRules } from './validationRules';
 import FormInput from '../../../components/FormInput';
 import FormRadioGroup from '../../../components/FormRadioGroup';
 import { useDispatch } from 'react-redux';
 import { user } from '../../../redux/slices/userSlice';
 import LogoBanner from '../../../components/LogoBanner';
+import { loginRules } from './validationRules';
 
 type FormData = {
   email: string;
@@ -61,9 +61,9 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
     <View style={commonStyles.container}>
       <LogoBanner />
       <View>
-        <FormRadioGroup control={control} name="userType" options={options} label='I am a...'/>
+        <FormRadioGroup control={control as any} name="userType" options={options} label="I am" />
         <FormInput
-          control={control}
+          control={control as any}
           name="email"
           label={LOGIN_SCREEN.EMAIL_INPUT_TEXT}
           rules={loginRules.email}
@@ -71,7 +71,7 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
           returnKeyType="next"
         />
         <FormInput
-          control={control}
+          control={control as any}
           name="password"
           label={LOGIN_SCREEN.PASSWORD_INPUT_TEXT}
           secureTextEntry

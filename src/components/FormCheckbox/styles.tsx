@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import palette from '../../theme/palette';
+import { palette } from '../../theme/palette';
 
 const styles = StyleSheet.create({
   row: {

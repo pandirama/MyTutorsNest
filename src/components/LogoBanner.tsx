@@ -3,7 +3,7 @@ import Logo from '../assets/images/logo.svg';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
 
-const LogoBanner: React.FC = memo(() => {
+const LogoBanner: React.FC = () => {
   return (
     <Logo
       width={scale(180)}
@@ -11,7 +11,7 @@ const LogoBanner: React.FC = memo(() => {
       style={styles.logoImage}
     />
   );
-});
+};
 
 const styles = StyleSheet.create({
   logoImage: {
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogoBanner;
+export default memo(LogoBanner);

@@ -1,12 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TextInputProps,
-  Animated,
-  Pressable,
-} from 'react-native';
+import React, { memo, useEffect, useRef, useState } from 'react';
+import { Animated, Pressable } from 'react-native';
 import {
   Controller,
   Control,
@@ -14,7 +7,8 @@ import {
   Path,
   RegisterOptions,
 } from 'react-hook-form';
-import palette from '../../theme/palette';
+import { palette } from '../../theme/palette';
+import { View, Text, TextInput, TextInputProps } from 'react-native';
 import styles from './styles';
 
 type Props<T extends FieldValues> = TextInputProps & {
@@ -115,10 +109,7 @@ const OutlinedInput = ({
         onPress={() => inputRef.current?.focus()}
       >
         {label && (
-          <Animated.Text
-            numberOfLines={1}
-            style={[styles.label, labelStyle]}
-          >
+          <Animated.Text numberOfLines={1} style={[styles.label, labelStyle]}>
             {label}
           </Animated.Text>
         )}
@@ -146,4 +137,4 @@ const OutlinedInput = ({
   );
 };
 
-export default FormInput;
+export default memo(FormInput);

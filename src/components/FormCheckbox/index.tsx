@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import palette from '../../theme/palette';
+import { palette } from '../../theme/palette';
 import { moderateScale } from 'react-native-size-matters';
 
 type Props<T extends FieldValues> = {
@@ -41,4 +41,4 @@ const FormCheckbox = <T extends FieldValues>({
   );
 };
 
-export default FormCheckbox;
+export default memo(FormCheckbox);

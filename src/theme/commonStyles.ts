@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import palette from '../theme/palette';
+import { palette } from '../theme/palette';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import { fontFamily } from './fonts';
 
@@ -18,7 +18,7 @@ const commonStyles = StyleSheet.create({
   buttonText: {
     fontSize: moderateScale(18),
     color: palette.white,
-    fontFamily: fontFamily[700],
+    fontFamily: fontFamily.bold,
   },
 });
 

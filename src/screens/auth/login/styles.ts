@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import palette from '../../../theme/palette';
 import { fontFamily } from '../../../theme/fonts';
+import { palette } from '../../../theme/palette';
 
 const styles = StyleSheet.create({
   loginText: {
     fontSize: moderateScale(20),
-    fontFamily: fontFamily[800],
+    fontFamily: fontFamily.bold,
   },
   submitBtn: {
     marginTop: verticalScale(40),
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   forgotText: {
     fontSize: moderateScale(13),
-    fontFamily: fontFamily[800],
+    fontFamily: fontFamily.extraBold,
     color: palette.primary,
   },
   registerView: {
@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
   },
   registerUseText: {
     fontSize: moderateScale(14),
-    fontFamily: fontFamily[500],
+    fontFamily: fontFamily.semiBold,
     color: palette.black,
   },
   registerText: {
     fontSize: moderateScale(14),
     color: palette.primary,
     marginLeft: scale(5),
-    fontFamily: fontFamily[800],
+    fontFamily: fontFamily.bold,
   },
 });
 

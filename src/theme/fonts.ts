@@ -4,19 +4,18 @@ import { Platform } from 'react-native';
 // Keep both in sync so fontFamily applies on both platforms.
 export const fontFamily = Platform.select({
   ios: {
-    300: 'Nunito-Light',
-    400: 'Nunito-SemiBold',
-    500: 'Nunito-SemiBold',
-    700: 'Nunito-Bold',
-    800: 'Nunito-ExtraBold',
-    900: 'Nunito-Black',
+    light: 'Nunito-Light',
+    semiBold: 'Nunito-SemiBold',
+    bold: 'Nunito-Bold',
+    extraBold: 'Nunito-ExtraBold',
+    black: 'Nunito-Black',
   },
   default: {
-    300: 'NunitoLight',
-    400: 'NunitoSemiBold',
-    500: 'NunitoSemiBold',
-    700: 'NunitoBold',
-    800: 'NunitoExtraBold',
-    900: 'NunitoBlack',
+    light: 'NunitoLight',
+    semiBold: 'NunitoSemiBold',
+    bold: 'NunitoBold',
+    extraBold: 'NunitoExtraBold',
+    black: 'NunitoBlack',
   },
-}) as Record<number, string>;
+}) as Record<string, string>;
+

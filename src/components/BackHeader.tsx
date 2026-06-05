@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { palette } from '../theme/palette';
 
 interface Props {
   title?: string;
@@ -20,7 +21,11 @@ const BackHeader = ({ title, rightIcon, containerStyle }: Props) => {
   return (
     <View style={[styles.header, containerStyle]}>
       <TouchableOpacity onPress={onBack}>
-        <Ionicons name="arrow-back" size={moderateScale(20)} />
+        <Ionicons
+          name="chevron-back-outline"
+          size={moderateScale(25)}
+          color={palette.black}
+        />
       </TouchableOpacity>
       {title && <Text style={styles.titleTxt}>{title}</Text>}
       {rightIcon && <TouchableOpacity>right</TouchableOpacity>}
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     height: verticalScale(44),
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: scale(20)
+    paddingHorizontal: scale(20),
   },
   titleTxt: {
     fontSize: moderateScale(14),
@@ -41,4 +46,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export default BackHeader;
+export default memo(BackHeader);

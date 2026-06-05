@@ -5,10 +5,11 @@ import {
   SafeAreaProvider,
   SafeAreaView,
 } from 'react-native-safe-area-context';
-import palette from './src/theme/palette';
+import { palette } from './src/theme/palette';
 import { Provider } from 'react-redux';
-import { store } from './src/redux/store';
+import { persistor, store } from './src/redux/store';
 import RootNavigators from './src/navigation/RootNavigator';
+import { PersistGate } from 'redux-persist/integration/react';
 
 if (__DEV__) {
   import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
@@ -22,7 +23,9 @@ const App: React.FC = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
         <Provider store={store}>
-          <RootNavigators />
+          <PersistGate loading={null} persistor={persistor}>
+            <RootNavigators />
+          </PersistGate>
         </Provider>
       </SafeAreaView>
     </SafeAreaProvider>

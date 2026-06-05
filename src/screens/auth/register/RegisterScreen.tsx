@@ -9,9 +9,10 @@ import FormCheckbox from '../../../components/FormCheckbox';
 import FormRadioGroup from '../../../components/FormRadioGroup';
 import { useDispatch } from 'react-redux';
 import { user } from '../../../redux/slices/userSlice';
-import { loginRules } from './validationRules';
+import { registrationRules } from './validationRules';
 import BackHeader from '../../../components/BackHeader';
 import LogoBanner from '../../../components/LogoBanner';
+import { loginRules } from '../login/validationRules';
 
 type FormData = {
   email: string;
@@ -57,13 +58,13 @@ const RegisterScreen: React.FC = () => {
       <LogoBanner />
       <View>
         <FormRadioGroup
-          control={control}
+          control={control as any}
           name="userType"
           options={options}
           label="I am a..."
         />
         <FormInput
-          control={control}
+          control={control as any}
           name="email"
           label={LOGIN_SCREEN.EMAIL_INPUT_TEXT}
           rules={loginRules.email}
@@ -71,15 +72,19 @@ const RegisterScreen: React.FC = () => {
           returnKeyType="next"
         />
         <FormInput
-          control={control}
+          control={control as any}
           name="password"
           label={LOGIN_SCREEN.PASSWORD_INPUT_TEXT}
           secureTextEntry
           returnKeyType="done"
-          rules={loginRules.password}
+          rules={registrationRules.password}
         />
         <View style={styles.termsContainer}>
-          <FormCheckbox control={control} name="termscondition" label="terms" />
+          <FormCheckbox
+            control={control as any}
+            name="termscondition"
+            label="terms"
+          />
           <TouchableOpacity
             style={commonStyles.button}
             onPress={handleSubmit(onSubmit)}
