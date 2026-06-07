@@ -7,11 +7,15 @@ const commonStyles = StyleSheet.create({
   container: {
     backgroundColor: palette.white,
     flex: 1,
-    paddingHorizontal: scale(25),
+    paddingHorizontal: scale(20),
+  },
+  mainContainer: {
+    backgroundColor: palette.white,
+    flex: 1,
   },
   button: {
     backgroundColor: palette.primary,
-    paddingVertical: verticalScale(12),
+    paddingVertical: verticalScale(9),
     alignItems: 'center',
     borderRadius: moderateScale(10),
   },
@@ -19,6 +23,9 @@ const commonStyles = StyleSheet.create({
     fontSize: moderateScale(18),
     color: palette.white,
     fontFamily: fontFamily.bold,
+  },
+  disabled: {
+    backgroundColor: palette.disabled,
   },
 });
 

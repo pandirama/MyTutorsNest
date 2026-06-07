@@ -10,12 +10,14 @@ type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
   label: string;
+  setAcceptTerms: (value: boolean) => void;
 };
 
 const FormCheckbox = <T extends FieldValues>({
   control,
   name,
   label,
+  setAcceptTerms,
 }: Props<T>) => {
   return (
     <Controller
@@ -23,7 +25,13 @@ const FormCheckbox = <T extends FieldValues>({
       name={name}
       defaultValue={false as any}
       render={({ field: { value, onChange } }) => (
-        <TouchableOpacity style={styles.row} onPress={() => onChange(!value)}>
+        <TouchableOpacity
+          style={styles.row}
+          onPress={() => {
+            onChange(!value);
+            setAcceptTerms(!value);
+          }}
+        >
           <View style={[styles.box, value && styles.selectedBox]}>
             {value && (
               <Ionicons

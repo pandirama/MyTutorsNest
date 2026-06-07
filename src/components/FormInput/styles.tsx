@@ -4,7 +4,7 @@ import { palette } from '../../theme/palette';
 
 // Shared numbers the floating-label animation interpolates between.
 const metrics = {
-  restTop: verticalScale(12),
+  restTop: verticalScale(11),
   floatTop: verticalScale(-8),
   restFontSize: moderateScale(14),
   floatFontSize: moderateScale(12),
@@ -12,7 +12,7 @@ const metrics = {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: verticalScale(20),
+    marginTop: verticalScale(15),
   },
   input: {
     borderRadius: moderateScale(10),
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textInput: {
-    paddingVertical: verticalScale(12),
+    paddingVertical: verticalScale(11),
     fontSize: moderateScale(14),
     color: palette.black,
     padding: 0,

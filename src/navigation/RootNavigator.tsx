@@ -3,22 +3,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthStackNavigator from './AuthNavigator';
 import MainStackNavigator from './MainNavigator';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { navigationRef } from './RootNavigation';
 
 const AppStack = createNativeStackNavigator();
 
 const AppStackScreen: React.FC = () => {
-  const isAuthenticated = useSelector(
-    (state: any) => state.user.isAuthenticated,
-  );
+  // const isAuthenticated = useSelector(
+  //   (state: any) => state.user.isAuthenticated,
+  // );
   return (
     <AppStack.Navigator screenOptions={{ headerShown: false }}>
-      {isAuthenticated ? (
+      {/* {isAuthenticated ? (
         <AppStack.Screen name="MAIN" component={MainStackNavigator} />
       ) : (
         <AppStack.Screen name="AUTH" component={AuthStackNavigator} />
-      )}
+      )} */}
+      <AppStack.Screen name="AUTH" component={AuthStackNavigator} />
+      <AppStack.Screen name="MAIN" component={MainStackNavigator} />
     </AppStack.Navigator>
   );
 };

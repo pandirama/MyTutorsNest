@@ -14,7 +14,6 @@ import { loginRules } from './validationRules';
 type FormData = {
   email: string;
   password: string;
-  termscondition: boolean;
   userType: string;
 };
 
@@ -32,11 +31,10 @@ const options = [
 const LoginScreen: React.FC = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
-  const { control, handleSubmit } = useForm<FormData>({
+  const { control, handleSubmit, reset } = useForm<FormData>({
     defaultValues: {
       email: '',
       password: '',
-      termscondition: false,
       userType: 'tutor',
     },
   });
@@ -44,24 +42,35 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
   const onSubmit = useCallback(
     (data: FormData) => {
       console.log(data);
+      navigation.navigate('MAIN');
       dispatch(user({ email: data.email }));
     },
-    [dispatch],
+    [dispatch, navigation],
   );
 
   const onRegister = useCallback(() => {
+    reset();
     navigation.navigate('SIGNUP');
-  }, [navigation]);
+  }, [reset, navigation]);
 
   const onForgotPassword = useCallback(() => {
-    navigation.navigate('SIGNUP');
-  }, [navigation]);
+    reset();
+    navigation.navigate('FORGOT_PASSWORD');
+  }, [reset, navigation]);
 
   return (
     <View style={commonStyles.container}>
-      <LogoBanner />
+      <LogoBanner
+        title="Good to See You!"
+        subTitle="Login to continue your learning journey"
+      />
       <View>
-        <FormRadioGroup control={control as any} name="userType" options={options} label="I am" />
+        <FormRadioGroup
+          control={control as any}
+          name="userType"
+          options={options}
+          label="I am a"
+        />
         <FormInput
           control={control as any}
           name="email"
@@ -85,7 +94,13 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[commonStyles.button, styles.submitBtn]}
-          onPress={handleSubmit(onSubmit)}
+          // onPress={handleSubmit(onSubmit)}
+          onPress={() =>
+            navigation.navigate('MAIN', {
+              screen: 'Home',
+              
+            })
+          }
         >
           <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>
         </TouchableOpacity>

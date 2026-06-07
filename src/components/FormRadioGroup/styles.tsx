@@ -18,9 +18,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+    justifyContent: 'center',
   },
   outerCircle: {
-    marginRight: scale(10),
+    marginRight: scale(5),
   },
   optionText: {
     fontSize: moderateScale(15),
@@ -28,6 +29,6 @@ export default StyleSheet.create({
     fontFamily: fontFamily.semiBold,
   },
   selectedOptionText: {
-    fontFamily: fontFamily.bold,
+    fontFamily: fontFamily.extraBold,
   },
 });

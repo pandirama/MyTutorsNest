@@ -4,6 +4,9 @@ import { fontFamily } from '../../../theme/fonts';
 import { palette } from '../../../theme/palette';
 
 const styles = StyleSheet.create({
+  back: {
+    position: 'absolute',
+  },
   loginText: {
     fontSize: moderateScale(20),
     fontFamily: fontFamily.bold,

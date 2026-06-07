@@ -12,7 +12,13 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(20),
   },
   termsContainer: {
-    marginTop: verticalScale(40),
+    marginTop: verticalScale(15),
+  },
+  content: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    paddingBottom: verticalScale(20),
   },
 });
 
