@@ -1,26 +1,26 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import { fontFamily } from '../../theme/fonts';
-import { palette } from '../../theme/palette';
+import { fontFamily } from '@/theme/fonts';
+import { palette } from '@/theme/palette';
 
 export default StyleSheet.create({
   container: {
     marginVertical: verticalScale(10),
   },
-  subContainer: {
+  optionsRow: {
     flexDirection: 'row',
   },
   groupLabel: {
     fontSize: moderateScale(15),
     marginBottom: verticalScale(10),
   },
-  row: {
+  option: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
   },
-  outerCircle: {
+  radioIcon: {
     marginRight: scale(5),
   },
   optionText: {
@@ -28,7 +28,7 @@ export default StyleSheet.create({
     color: palette.black,
     fontFamily: fontFamily.semiBold,
   },
-  selectedOptionText: {
+  selectedOptionText:{
     fontFamily: fontFamily.extraBold,
-  },
+  }
 });

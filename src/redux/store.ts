@@ -9,7 +9,7 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import userReducer from '../redux/slices/userSlice';
+import userReducer from '@/redux/slices/userSlice';
 import { reduxStorage } from './storage/reduxStorage';
 
 const rootReducer = combineReducers({

@@ -1,11 +1,12 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { memo, useCallback } from 'react';
-import { toggleDrawer } from '../navigation/RootNavigation';
+import { toggleDrawer } from '@/navigation/navigationService';
+import { ROUTES } from '@/navigation/routes';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import { palette } from '../theme/palette';
+import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { fontFamily } from '../theme/fonts';
+import { fontFamily } from '@/theme/fonts';
 
 interface MainHeaderProps {
   title: string;
@@ -26,7 +27,7 @@ const MainHeader = ({
 }: MainHeaderProps) => {
   const onToggleDrawer = useCallback(() => toggleDrawer(), []);
   const goToNotifications = useCallback(
-    () => navigation?.navigate?.('NotificationScreen'),
+    () => navigation?.navigate?.(ROUTES.NOTIFICATIONS),
     [navigation],
   );
 

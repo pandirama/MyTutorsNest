@@ -7,7 +7,7 @@ import {
   Path,
   RegisterOptions,
 } from 'react-hook-form';
-import { palette } from '../../theme/palette';
+import { palette } from '@/theme/palette';
 import { View, Text, TextInput, TextInputProps } from 'react-native';
 import styles from './styles';
 
@@ -105,7 +105,7 @@ const OutlinedInput = ({
   return (
     <View style={styles.container}>
       <Pressable
-        style={[styles.input, { borderColor }]}
+        style={[styles.inputContainer, { borderColor }]}
         onPress={() => inputRef.current?.focus()}
       >
         {label && (

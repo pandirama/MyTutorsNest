@@ -7,17 +7,22 @@ import {
   ScrollView,
 } from 'react-native';
 import styles from './styles';
-import { COMMON } from '../../../utils/constants';
-import commonStyles from '../../../theme/commonStyles';
+import {
+  COMMON,
+  REGISTER_SCREEN,
+  USER_TYPE,
+  USER_TYPE_OPTIONS,
+} from '@/utils/constants';
+import commonStyles from '@/styles/commonStyles';
 import { useForm } from 'react-hook-form';
-import FormInput from '../../../components/FormInput';
-import FormCheckbox from '../../../components/FormCheckbox';
-import FormRadioGroup from '../../../components/FormRadioGroup';
+import FormInput from '@/components/FormInput';
+import FormCheckbox from '@/components/FormCheckbox';
+import FormRadioGroup from '@/components/FormRadioGroup';
 import { useDispatch } from 'react-redux';
-import { user } from '../../../redux/slices/userSlice';
+import { setUser } from '@/redux/slices/userSlice';
 import { registrationRules } from './validationRules';
-import BackHeader from '../../../components/BackHeader';
-import LogoBanner from '../../../components/LogoBanner';
+import BackHeader from '@/components/BackHeader';
+import LogoBanner from '@/components/LogoBanner';
 
 type FormData = {
   name: string;
@@ -28,17 +33,6 @@ type FormData = {
   termscondition: boolean;
   userType: string;
 };
-
-const options = [
-  {
-    label: 'Tutor',
-    value: 'tutor',
-  },
-  {
-    label: 'Student',
-    value: 'student',
-  },
-];
 
 const RegisterScreen: React.FC = () => {
   const dispatch = useDispatch();
@@ -53,34 +47,34 @@ const RegisterScreen: React.FC = () => {
       password: '',
       confirmPassword: '',
       termscondition: false,
-      userType: 'tutor',
+      userType: USER_TYPE.TUTOR,
     },
   });
 
   const onSubmit = useCallback(
     (data: FormData) => {
       console.log(data);
-      dispatch(user({ email: data.email }));
+      dispatch(setUser({ email: data.email }));
     },
     [dispatch],
   );
 
   return (
     <View style={commonStyles.container}>
-      <BackHeader containerStyle={styles.back} />
+      <BackHeader containerStyle={styles.backHeader} />
       <LogoBanner
-        title="Create Your Account"
-        subTitle="Join us and start your learning journey"
+        title={REGISTER_SCREEN.TITLE}
+        subTitle={REGISTER_SCREEN.SUBTITLE}
       />
       <FormRadioGroup
         control={control as any}
         name="userType"
-        options={options}
-        label="I am a"
+        options={USER_TYPE_OPTIONS}
+        label={COMMON.USER_ROLE_LABEL}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollViewContent}
+        contentContainerStyle={styles.scrollContent}
       >
         <KeyboardAvoidingView
           behavior={'padding'}
@@ -91,14 +85,14 @@ const RegisterScreen: React.FC = () => {
             <FormInput
               control={control as any}
               name="name"
-              label={"Enter Your Full Name"}
+              label={REGISTER_SCREEN.NAME_INPUT_TEXT}
               rules={registrationRules.name}
               returnKeyType="next"
             />
             <FormInput
               control={control as any}
               name="email"
-              label={"Enter Your Email"}
+              label={REGISTER_SCREEN.EMAIL_INPUT_TEXT}
               keyboardType="email-address"
               returnKeyType="next"
               rules={registrationRules.email}
@@ -106,7 +100,7 @@ const RegisterScreen: React.FC = () => {
             <FormInput
               control={control as any}
               name="mobile"
-              label={"Enter Your Mobile Number"}
+              label={REGISTER_SCREEN.MOBILE_INPUT_TEXT}
               keyboardType="phone-pad"
               returnKeyType="next"
               rules={registrationRules.mobile}
@@ -114,7 +108,7 @@ const RegisterScreen: React.FC = () => {
             <FormInput
               control={control as any}
               name="password"
-              label={"Enter Your Password"}
+              label={REGISTER_SCREEN.PASSWORD_INPUT_TEXT}
               secureTextEntry
               returnKeyType="next"
               rules={registrationRules.password}
@@ -122,7 +116,7 @@ const RegisterScreen: React.FC = () => {
             <FormInput
               control={control as any}
               name="confirmPassword"
-              label={"Enter Your Confirm Password"}
+              label={REGISTER_SCREEN.CONFIRM_PASSWORD_INPUT_TEXT}
               secureTextEntry
               returnKeyType="next"
               rules={registrationRules.password}
@@ -131,7 +125,7 @@ const RegisterScreen: React.FC = () => {
               <FormCheckbox
                 control={control as any}
                 name="termscondition"
-                label="Accept the Terms of use and Privacy policy"
+                label={REGISTER_SCREEN.TERMS_TEXT}
                 setAcceptTerms={setAcceptTerms}
               />
               <TouchableOpacity

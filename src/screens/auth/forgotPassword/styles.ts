@@ -5,14 +5,8 @@ const styles = StyleSheet.create({
   backHeader: {
     position: 'absolute',
   },
-  termsContainer: {
-    marginTop: verticalScale(15),
-  },
-  content: {
-    flex: 1,
-  },
-  scrollContent: {
-    paddingBottom: verticalScale(20),
+  submitButton: {
+    marginTop: verticalScale(40),
   },
 });
 

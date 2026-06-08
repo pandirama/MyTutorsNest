@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import { palette } from '../../theme/palette';
+import { palette } from '@/theme/palette';
 
 // Shared numbers the floating-label animation interpolates between.
 const metrics = {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: verticalScale(15),
   },
-  input: {
+  inputContainer: {
     borderRadius: moderateScale(10),
     borderWidth: moderateScale(1),
     borderColor: palette.lightGray,

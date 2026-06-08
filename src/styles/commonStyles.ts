@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { palette } from '../theme/palette';
+import { palette } from '@/theme/palette';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import { fontFamily } from './fonts';
+import { fontFamily } from '@/theme/fonts';
 
 const commonStyles = StyleSheet.create({
   container: {

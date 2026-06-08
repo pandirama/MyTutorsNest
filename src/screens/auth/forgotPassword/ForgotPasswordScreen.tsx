@@ -1,16 +1,21 @@
 import React, { memo, useCallback } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import { COMMON, FORGOT_PASSWORD_SCREEN } from '../../../utils/constants';
-import commonStyles from '../../../theme/commonStyles';
+import {
+  COMMON,
+  FORGOT_PASSWORD_SCREEN,
+  USER_TYPE,
+  USER_TYPE_OPTIONS,
+} from '@/utils/constants';
+import commonStyles from '@/styles/commonStyles';
 import { useForm } from 'react-hook-form';
-import FormInput from '../../../components/FormInput';
-import FormRadioGroup from '../../../components/FormRadioGroup';
+import FormInput from '@/components/FormInput';
+import FormRadioGroup from '@/components/FormRadioGroup';
 import { useDispatch } from 'react-redux';
-import { user } from '../../../redux/slices/userSlice';
-import LogoBanner from '../../../components/LogoBanner';
+import { setUser } from '@/redux/slices/userSlice';
+import LogoBanner from '@/components/LogoBanner';
 import { loginRules } from './validationRules';
-import BackHeader from '../../../components/BackHeader';
+import BackHeader from '@/components/BackHeader';
 
 type FormData = {
   oldPassword: string;
@@ -18,17 +23,6 @@ type FormData = {
   confirmPassword: string;
   userType: string;
 };
-
-const options = [
-  {
-    label: 'Tutor',
-    value: 'tutor',
-  },
-  {
-    label: 'Student',
-    value: 'student',
-  },
-];
 
 const ForgotPassword: React.FC = () => {
   const dispatch = useDispatch();
@@ -38,24 +32,29 @@ const ForgotPassword: React.FC = () => {
       oldPassword: '',
       newPassword: '',
       confirmPassword: '',
-      userType: 'tutor',
+      userType: USER_TYPE.TUTOR,
     },
   });
 
   const onSubmit = useCallback(
     (data: FormData) => {
       console.log(data);
-      dispatch(user({ email: '' }));
+      dispatch(setUser({ email: '' }));
     },
     [dispatch],
   );
 
   return (
     <View style={commonStyles.container}>
-      <BackHeader containerStyle={styles.back} />
+      <BackHeader containerStyle={styles.backHeader} />
       <LogoBanner />
       <View>
-        <FormRadioGroup control={control as any} name="userType" options={options} label="I am a" />
+        <FormRadioGroup
+          control={control as any}
+          name="userType"
+          options={USER_TYPE_OPTIONS}
+          label={COMMON.USER_ROLE_LABEL}
+        />
         <FormInput
           control={control as any}
           name="oldPassword"
@@ -81,7 +80,7 @@ const ForgotPassword: React.FC = () => {
           rules={loginRules.password}
         />
         <TouchableOpacity
-          style={[commonStyles.button, styles.submitBtn]}
+          style={[commonStyles.button, styles.submitButton]}
           onPress={handleSubmit(onSubmit)}
         >
           <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>

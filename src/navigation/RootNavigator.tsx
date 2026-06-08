@@ -4,7 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthStackNavigator from './AuthNavigator';
 import MainStackNavigator from './MainNavigator';
 // import { useSelector } from 'react-redux';
-import { navigationRef } from './RootNavigation';
+import { navigationRef } from './navigationService';
+import { ROUTES } from './routes';
 
 const AppStack = createNativeStackNavigator();
 
@@ -19,8 +20,8 @@ const AppStackScreen: React.FC = () => {
       ) : (
         <AppStack.Screen name="AUTH" component={AuthStackNavigator} />
       )} */}
-      <AppStack.Screen name="AUTH" component={AuthStackNavigator} />
-      <AppStack.Screen name="MAIN" component={MainStackNavigator} />
+      <AppStack.Screen name={ROUTES.AUTH} component={AuthStackNavigator} />
+      <AppStack.Screen name={ROUTES.MAIN} component={MainStackNavigator} />
     </AppStack.Navigator>
   );
 };

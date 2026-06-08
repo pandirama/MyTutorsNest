@@ -1,32 +1,27 @@
 import React, { memo, useCallback } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import { COMMON, LOGIN_SCREEN } from '../../../utils/constants';
-import commonStyles from '../../../theme/commonStyles';
+import {
+  COMMON,
+  LOGIN_SCREEN,
+  USER_TYPE,
+  USER_TYPE_OPTIONS,
+} from '@/utils/constants';
+import commonStyles from '@/styles/commonStyles';
 import { useForm } from 'react-hook-form';
-import FormInput from '../../../components/FormInput';
-import FormRadioGroup from '../../../components/FormRadioGroup';
+import FormInput from '@/components/FormInput';
+import FormRadioGroup from '@/components/FormRadioGroup';
 import { useDispatch } from 'react-redux';
-import { user } from '../../../redux/slices/userSlice';
-import LogoBanner from '../../../components/LogoBanner';
+import { setUser } from '@/redux/slices/userSlice';
+import LogoBanner from '@/components/LogoBanner';
 import { loginRules } from './validationRules';
+import { ROUTES } from '@/navigation/routes';
 
 type FormData = {
   email: string;
   password: string;
   userType: string;
 };
-
-const options = [
-  {
-    label: 'Tutor',
-    value: 'tutor',
-  },
-  {
-    label: 'Student',
-    value: 'student',
-  },
-];
 
 const LoginScreen: React.FC = ({ navigation }: any) => {
   const dispatch = useDispatch();
@@ -35,41 +30,38 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
     defaultValues: {
       email: '',
       password: '',
-      userType: 'tutor',
+      userType: USER_TYPE.TUTOR,
     },
   });
 
   const onSubmit = useCallback(
     (data: FormData) => {
       console.log(data);
-      navigation.navigate('MAIN');
-      dispatch(user({ email: data.email }));
+      navigation.navigate(ROUTES.MAIN);
+      dispatch(setUser({ email: data.email }));
     },
     [dispatch, navigation],
   );
 
   const onRegister = useCallback(() => {
     reset();
-    navigation.navigate('SIGNUP');
+    navigation.navigate(ROUTES.SIGNUP);
   }, [reset, navigation]);
 
   const onForgotPassword = useCallback(() => {
     reset();
-    navigation.navigate('FORGOT_PASSWORD');
+    navigation.navigate(ROUTES.FORGOT_PASSWORD);
   }, [reset, navigation]);
 
   return (
     <View style={commonStyles.container}>
-      <LogoBanner
-        title="Good to See You!"
-        subTitle="Login to continue your learning journey"
-      />
+      <LogoBanner title={LOGIN_SCREEN.TITLE} subTitle={LOGIN_SCREEN.SUBTITLE} />
       <View>
         <FormRadioGroup
           control={control as any}
           name="userType"
-          options={options}
-          label="I am a"
+          options={USER_TYPE_OPTIONS}
+          label={COMMON.USER_ROLE_LABEL}
         />
         <FormInput
           control={control as any}
@@ -87,27 +79,30 @@ const LoginScreen: React.FC = ({ navigation }: any) => {
           returnKeyType="done"
           rules={loginRules.password}
         />
-        <TouchableOpacity style={styles.forgotBtn} onPress={onForgotPassword}>
-          <Text style={styles.forgotText}>
-            {LOGIN_SCREEN.PASSWORD_BTN_TEXT}
+        <TouchableOpacity style={styles.forgotPasswordButton} onPress={onForgotPassword}>
+          <Text style={styles.forgotPasswordText}>
+            {LOGIN_SCREEN.FORGOT_PASSWORD_TEXT}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[commonStyles.button, styles.submitBtn]}
+          style={[commonStyles.button, styles.submitButton]}
           // onPress={handleSubmit(onSubmit)}
           onPress={() =>
-            navigation.navigate('MAIN', {
-              screen: 'Home',
-              
+            navigation.navigate(ROUTES.MAIN, {
+              screen: ROUTES.HOME,
             })
           }
         >
           <Text style={commonStyles.buttonText}>{COMMON.SUBMIT_TEXT}</Text>
         </TouchableOpacity>
-        <View style={styles.registerView}>
-          <Text style={styles.registerUseText}>Don’t have account?</Text>
+        <View style={styles.registerContainer}>
+          <Text style={styles.registerPromptText}>
+            {LOGIN_SCREEN.REGISTER_PROMPT_TEXT}
+          </Text>
           <TouchableOpacity onPress={onRegister}>
-            <Text style={styles.registerText}>SIGN UP</Text>
+            <Text style={styles.registerLinkText}>
+              {LOGIN_SCREEN.REGISTER_LINK_TEXT}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

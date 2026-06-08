@@ -3,7 +3,7 @@ import React, { memo, useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { palette } from '../theme/palette';
+import { palette } from '@/theme/palette';
 
 interface Props {
   title?: string;

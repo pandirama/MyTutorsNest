@@ -5,10 +5,10 @@ import {
   SafeAreaProvider,
   SafeAreaView,
 } from 'react-native-safe-area-context';
-import { palette } from './src/theme/palette';
+import { palette } from '@/theme/palette';
 import { Provider } from 'react-redux';
-import { persistor, store } from './src/redux/store';
-import RootNavigators from './src/navigation/RootNavigator';
+import { persistor, store } from '@/redux/store';
+import RootNavigators from '@/navigation/RootNavigator';
 import { PersistGate } from 'redux-persist/integration/react';
 
 if (__DEV__) {

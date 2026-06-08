@@ -14,16 +14,8 @@
       "sha1": "68561c75ac751b3817285043aef9d2a1cd240f26"
     },
     {
-      "path": "src/assets/fonts/NunitoExtraLight.ttf",
-      "sha1": "96ad0ae5bf729625fc73f9ac19a23171310f97c8"
-    },
-    {
       "path": "src/assets/fonts/NunitoLight.ttf",
       "sha1": "900d95ad1ebc89f6aef490a92680cf8b56193b6b"
-    },
-    {
-      "path": "src/assets/fonts/NunitoRegular.ttf",
-      "sha1": "07822103331d2ebc7756a0746d8f34a7210a68ed"
     },
     {
       "path": "src/assets/fonts/NunitoSemiBold.ttf",

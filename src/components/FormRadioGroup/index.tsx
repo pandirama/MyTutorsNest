@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
-import { palette } from '../../theme/palette';
+import { palette } from '@/theme/palette';
 import { moderateScale } from 'react-native-size-matters';
 
 type Option = {
@@ -31,17 +31,17 @@ const FormRadioGroup = <T extends FieldValues>({
       render={({ field: { value = name, onChange } }) => (
         <View style={styles.container}>
           {label && <Text style={styles.groupLabel}>{label}</Text>}
-          <View style={styles.subContainer}>
+          <View style={styles.optionsRow}>
             {options.map(item => {
               const selected = value === item.value;
               return (
                 <TouchableOpacity
                   key={item.value.toString()}
-                  style={styles.row}
+                  style={styles.option}
                   onPress={() => onChange(item.value)}
                   activeOpacity={0.8}
                 >
-                  <View style={styles.outerCircle}>
+                  <View style={styles.radioIcon}>
                     {selected && (
                       <Ionicons
                         name="radio-button-on"
@@ -59,7 +59,9 @@ const FormRadioGroup = <T extends FieldValues>({
                     )}
                   </View>
 
-                  <Text style={styles.optionText}>{item.label}</Text>
+                  <Text style={[styles.optionText, selected && styles.selectedOptionText]}>
+                    {item.label}
+                  </Text>
                 </TouchableOpacity>
               );
             })}

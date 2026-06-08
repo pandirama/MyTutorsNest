@@ -1,23 +1,23 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-import { palette } from '../../theme/palette';
+import { palette } from '@/theme/palette';
 
 const styles = StyleSheet.create({
-  row: {
+  container: {
     flexDirection: 'row',
     marginVertical: verticalScale(5),
     marginLeft: scale(5),
   },
-  box: {
-    width: scale(18),
-    height: scale(18),
+  checkbox: {
+    width: scale(16),
+    height: scale(16),
     borderWidth: moderateScale(1),
     borderColor: palette.black,
     borderRadius: moderateScale(5),
     alignItems: 'center',
     justifyContent: 'center',
   },
-  selectedBox: {
+  checkboxChecked: {
     borderColor: palette.primary,
   },
   label: {

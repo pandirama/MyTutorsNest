@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import Logo from '../assets/images/logo.svg';
+import Logo from '@/assets/images/logo.svg';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import { StyleSheet, Text, View } from 'react-native';
-import { palette } from '../theme/palette';
-import { fontFamily } from '../theme/fonts';
+import { palette } from '@/theme/palette';
+import { fontFamily } from '@/theme/fonts';
 
 type LogoBannerProps = {
   title?: string;

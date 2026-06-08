@@ -1,13 +1,14 @@
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useMemo } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import HomeScreen from '../screens/dashBoard/Home';
-import ProfileScreen from '../screens/dashBoard/Profile';
-import { palette } from '../theme/palette';
+import HomeScreen from '@/screens/dashboard/home/HomeScreen';
+import ProfileScreen from '@/screens/dashboard/profile/ProfileScreen';
+import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { moderateScale } from 'react-native-size-matters';
 import {  StyleSheet } from 'react-native';
-import { fontFamily } from '../theme/fonts';
+import { fontFamily } from '@/theme/fonts';
+import { ROUTES } from './routes';
 
 // const MainStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator<any>();
@@ -27,13 +28,13 @@ const MainStackNavigator: React.FC = () => {
   const screens = useMemo<any[]>(
     () => [
       {
-        name: 'Home',
+        name: ROUTES.HOME,
         component: HomeScreen,
         label: 'Home',
         iconName: 'home-outline',
       },
       {
-        name: 'Profile',
+        name: ROUTES.PROFILE,
         component: ProfileScreen,
         label: 'Profile',
         iconName: 'person-outline',
@@ -57,7 +58,7 @@ const MainStackNavigator: React.FC = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName={ROUTES.HOME}
       screenOptions={drawerScreenOptions}
     >
       {screens.map(s => (
