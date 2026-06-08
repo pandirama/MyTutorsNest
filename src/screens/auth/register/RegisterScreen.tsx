@@ -23,6 +23,7 @@ import { setUser } from '@/redux/slices/userSlice';
 import { registrationRules } from './validationRules';
 import BackHeader from '@/components/BackHeader';
 import LogoBanner from '@/components/LogoBanner';
+import FormSelect from '@/components/FormSelect';
 
 type FormData = {
   name: string;
@@ -48,6 +49,7 @@ const RegisterScreen: React.FC = () => {
       confirmPassword: '',
       termscondition: false,
       userType: USER_TYPE.TUTOR,
+      
     },
   });
 
@@ -57,6 +59,16 @@ const RegisterScreen: React.FC = () => {
       dispatch(setUser({ email: data.email }));
     },
     [dispatch],
+  );
+
+  const getOptionLabel = useCallback((opt: any) => opt?.name || opt, []);
+  const renderOptionLabel = useCallback(
+    (opt: any) => (
+      <View>
+        <Text>{opt.name}</Text>
+      </View>
+    ),
+    [],
   );
 
   return (
@@ -121,6 +133,17 @@ const RegisterScreen: React.FC = () => {
               returnKeyType="next"
               rules={registrationRules.password}
             />
+            <FormSelect
+              control={control}
+              optionLoading={false}
+              options={countryOptions}
+              name="country"
+              error={errors.country}
+              searchByKey="name"
+              getOptionLabel={getOptionLabel}
+              renderOptionLabel={renderOptionLabel}
+              optionKey="_id"
+            />
             <View style={styles.termsContainer}>
               <FormCheckbox
                 control={control as any}
@@ -129,7 +152,10 @@ const RegisterScreen: React.FC = () => {
                 setAcceptTerms={setAcceptTerms}
               />
               <TouchableOpacity
-                style={[commonStyles.button, !acceptTerms && commonStyles.disabled]}
+                style={[
+                  commonStyles.button,
+                  !acceptTerms && commonStyles.disabled,
+                ]}
                 onPress={handleSubmit(onSubmit)}
                 disabled={!acceptTerms}
               >
