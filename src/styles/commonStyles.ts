@@ -10,7 +10,7 @@ const commonStyles = StyleSheet.create({
     paddingHorizontal: scale(20),
   },
   mainContainer: {
-    backgroundColor: palette.white,
+    backgroundColor: palette.offWhite,
     flex: 1,
   },
   button: {

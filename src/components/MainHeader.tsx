@@ -69,10 +69,11 @@ export default memo(MainHeader);
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: moderateScale(15),
+    paddingLeft: scale(12),
     flexDirection: 'row',
     alignItems: 'center',
-    height: verticalScale(60),
+    height: verticalScale(40),
+    backgroundColor: palette.white,
   },
   iconContainer: {
     width: scale(35),
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   curvedBottom: {
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
+    borderBottomLeftRadius: moderateScale(16),
+    borderBottomRightRadius: moderateScale(16),
     backgroundColor: palette.gray,
   },
   background: {
     backgroundColor: palette.gray,
   },
   rightIconContainer: {
-    marginRight: moderateScale(10),
+    marginRight: scale(10),
   },
 });

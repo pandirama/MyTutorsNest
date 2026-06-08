@@ -12,12 +12,12 @@ export const ROUTES = {
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
 
   // Main drawer (MainNavigator)
-  HOME: 'Home',
-  PROFILE: 'Profile',
+  HOME: 'HOME',
+  PROFILE: 'PROFILE',
 
   // Referenced by MainHeader's notification action, but NOT yet registered
   // in any navigator — navigating here is currently a no-op.
-  NOTIFICATIONS: 'NotificationScreen',
+  NOTIFICATIONS: 'NOTIFICATIONS',
 } as const;
 
 export type RouteName = (typeof ROUTES)[keyof typeof ROUTES];

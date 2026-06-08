@@ -1,16 +1,14 @@
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useMemo } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '@/screens/dashboard/home/HomeScreen';
 import ProfileScreen from '@/screens/dashboard/profile/ProfileScreen';
 import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { moderateScale } from 'react-native-size-matters';
-import {  StyleSheet } from 'react-native';
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import { StyleSheet } from 'react-native';
 import { fontFamily } from '@/theme/fonts';
 import { ROUTES } from './routes';
 
-// const MainStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator<any>();
 
 const getIconRenderer =
@@ -50,7 +48,7 @@ const MainStackNavigator: React.FC = () => {
       drawerInactiveTintColor: palette.black,
       drawerActiveBackgroundColor: palette.white,
       drawerStyle: {
-        width: moderateScale(300),
+        width: scale(250),
       },
     }),
     [],
@@ -78,13 +76,6 @@ const MainStackNavigator: React.FC = () => {
       ))}
     </Drawer.Navigator>
   );
-
-  // return (
-  //   <MainStack.Navigator screenOptions={{ headerShown: false }}>
-  //     <MainStack.Screen name="HOME" component={HomeScreen} />
-  //     <MainStack.Screen name="PROFILE" component={ProfileScreen} />
-  //   </MainStack.Navigator>
-  // );
 };
 
 const styles = StyleSheet.create({
@@ -92,9 +83,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderRadius: 0,
     justifyContent: 'center',
+    borderBottomColor: palette.lightGray,
   },
   drawerLabelStyle: {
-    fontFamily: fontFamily.bold,
+    fontFamily: fontFamily.regular,
     fontWeight: '700',
     fontSize: moderateScale(15),
     marginLeft: 0,
@@ -103,14 +95,9 @@ const styles = StyleSheet.create({
     marginLeft: 0,
   },
   icon: {
-    width: moderateScale(20),
-    height: moderateScale(20),
+    width: scale(20),
+    height: verticalScale(20),
     resizeMode: 'contain',
-  },
-  fontStyle: {
-    fontFamily: fontFamily.bold,
-    fontWeight: '700',
-    fontSize: moderateScale(15),
   },
 });
 
