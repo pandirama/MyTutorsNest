@@ -1,6 +1,8 @@
 const COMMON = {
   SUBMIT_TEXT: 'Submit',
   USER_ROLE_LABEL: 'I am a',
+  DONE_TEXT: 'Done',
+  SELECT_PLACEHOLDER: 'Select',
 };
 
 const USER_TYPE = {
@@ -32,6 +34,10 @@ const REGISTER_SCREEN = {
   PASSWORD_INPUT_TEXT: 'Enter Your Password',
   CONFIRM_PASSWORD_INPUT_TEXT: 'Enter Your Confirm Password',
   TERMS_TEXT: 'Accept the Terms of use and Privacy policy',
+  COUNTRY_LABEL: 'Country',
+  COUNTRY_PLACEHOLDER: 'Select Your Country',
+  SUBJECTS_LABEL: 'Subjects',
+  SUBJECTS_PLACEHOLDER: 'Select Subjects',
 };
 
 const FORGOT_PASSWORD_SCREEN = {
@@ -41,9 +47,33 @@ const FORGOT_PASSWORD_SCREEN = {
 };
 
 const HOME_SCREEN = {
-  TITLE: 'Home',
+  TITLE: 'My Tutors Nest',
   BODY_TEXT: 'Home Screen',
 };
+
+const NETWORK = {
+  NO_CONNECTION_TEXT: 'No Internet Connection',
+  ANIMATION_DURATION: 300,
+};
+
+const DRAWER = {
+  SIGN_OUT_TEXT: 'Sign Out',
+  APP_VERSION: 'V 1.0.0',
+  HOME_LABEL: 'Home',
+  FEEDBACK_LABEL: 'FeedBack',
+  PRIVACY_POLICY_LABEL: 'Privacy Policy',
+  TERMS_CONDITIONS_LABEL: 'Terms & Conditions',
+  ABOUT_US_LABEL: 'About Us',
+};
+
+// Mock data — replace with a country API response once available.
+const COUNTRY_OPTIONS = [
+  { _id: 'in', name: 'India' },
+  { _id: 'us', name: 'United States' },
+  { _id: 'uk', name: 'United Kingdom' },
+  { _id: 'ca', name: 'Canada' },
+  { _id: 'au', name: 'Australia' },
+];
 
 export {
   COMMON,
@@ -53,4 +83,7 @@ export {
   REGISTER_SCREEN,
   FORGOT_PASSWORD_SCREEN,
   HOME_SCREEN,
+  NETWORK,
+  DRAWER,
+  COUNTRY_OPTIONS,
 };

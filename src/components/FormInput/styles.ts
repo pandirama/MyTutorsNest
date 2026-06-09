@@ -19,12 +19,14 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(1),
     borderColor: palette.lightGray,
     paddingHorizontal: scale(15),
+    height: verticalScale(40),
     width: '100%',
     justifyContent: 'center',
   },
   textInput: {
     paddingVertical: verticalScale(11),
     fontSize: moderateScale(14),
+    paddingLeft: scale(5),
     color: palette.black,
     padding: 0,
     margin: 0,
@@ -40,6 +42,15 @@ const styles = StyleSheet.create({
     marginTop: verticalScale(4),
     fontSize: moderateScale(12),
     marginLeft: scale(5),
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftLabel: {
+    fontSize: moderateScale(14),
+    color: palette.black,
+    marginRight: scale(5),
   },
 });
 

@@ -1,4 +1,10 @@
-import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { memo, useCallback } from 'react';
 import { toggleDrawer } from '@/navigation/navigationService';
 import { ROUTES } from '@/navigation/routes';
@@ -7,6 +13,7 @@ import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { fontFamily } from '@/theme/fonts';
+import Logo from '@/assets/images/logo.svg';
 
 interface MainHeaderProps {
   title: string;
@@ -37,16 +44,23 @@ const MainHeader = ({
         styles.container,
         curveBorder && styles.curvedBottom,
         backGroundWithoutCurve && styles.background,
-      ]}>
+      ]}
+    >
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={onToggleDrawer}>
-          <Ionicons name={icon} size={moderateScale(24)} color={palette.black} />
+          <Ionicons
+            name={icon}
+            size={moderateScale(24)}
+            color={palette.black}
+          />
         </TouchableOpacity>
       </View>
-
-      <Text numberOfLines={1} style={styles.title}>
-        {title}
-      </Text>
+      <View style={styles.titleContainer}>
+        <Logo width={scale(30)} height={verticalScale(30)} />
+        <Text numberOfLines={1} style={styles.title}>
+          {title}
+        </Text>
+      </View>
 
       {RightAction ? (
         RightAction
@@ -80,12 +94,10 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   title: {
-    fontSize: moderateScale(16),
-    textAlign: 'center',
+    fontSize: moderateScale(14),
     fontWeight: '700',
     fontFamily: fontFamily.bold,
     color: palette.black,
-    flex: 1,
   },
   curvedBottom: {
     borderBottomLeftRadius: moderateScale(16),
@@ -97,5 +109,10 @@ const styles = StyleSheet.create({
   },
   rightIconContainer: {
     marginRight: scale(10),
+  },
+  titleContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

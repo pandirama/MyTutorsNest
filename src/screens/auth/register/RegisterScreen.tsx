@@ -9,6 +9,7 @@ import {
 import styles from './styles';
 import {
   COMMON,
+  COUNTRY_OPTIONS,
   REGISTER_SCREEN,
   USER_TYPE,
   USER_TYPE_OPTIONS,
@@ -25,6 +26,11 @@ import BackHeader from '@/components/BackHeader';
 import LogoBanner from '@/components/LogoBanner';
 import FormSelect from '@/components/FormSelect';
 
+type Country = {
+  _id: string;
+  name: string;
+};
+
 type FormData = {
   name: string;
   email: string;
@@ -33,14 +39,22 @@ type FormData = {
   confirmPassword: string;
   termscondition: boolean;
   userType: string;
+  country: Country | null;
+  subjects: Country[];
 };
+
+const countryOptions: Country[] = COUNTRY_OPTIONS;
 
 const RegisterScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const [acceptTerms, setAcceptTerms] = useState(false);
 
-  const { control, handleSubmit } = useForm<FormData>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
     defaultValues: {
       name: '',
       email: '',
@@ -49,13 +63,13 @@ const RegisterScreen: React.FC = () => {
       confirmPassword: '',
       termscondition: false,
       userType: USER_TYPE.TUTOR,
-      
+      country: null,
+      subjects: [],
     },
   });
 
   const onSubmit = useCallback(
     (data: FormData) => {
-      console.log(data);
       dispatch(setUser({ email: data.email }));
     },
     [dispatch],
@@ -115,7 +129,10 @@ const RegisterScreen: React.FC = () => {
               label={REGISTER_SCREEN.MOBILE_INPUT_TEXT}
               keyboardType="phone-pad"
               returnKeyType="next"
+              isLeftLabel
+              leftLabel="+91"
               rules={registrationRules.mobile}
+              maxLength={10}
             />
             <FormInput
               control={control as any}
@@ -134,12 +151,24 @@ const RegisterScreen: React.FC = () => {
               rules={registrationRules.password}
             />
             <FormSelect
-              control={control}
+              control={control as any}
+              placeholder={REGISTER_SCREEN.COUNTRY_PLACEHOLDER}
               optionLoading={false}
               options={countryOptions}
               name="country"
-              error={errors.country}
-              searchByKey="name"
+              error={errors.country as any}
+              getOptionLabel={getOptionLabel}
+              renderOptionLabel={renderOptionLabel}
+              optionKey="_id"
+            />
+            <FormSelect
+              control={control as any}
+              placeholder={REGISTER_SCREEN.SUBJECTS_PLACEHOLDER}
+              multiple
+              optionLoading={false}
+              options={countryOptions}
+              name="subjects"
+              error={errors.subjects as any}
               getOptionLabel={getOptionLabel}
               renderOptionLabel={renderOptionLabel}
               optionKey="_id"

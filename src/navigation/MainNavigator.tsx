@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import HomeScreen from '@/screens/dashboard/home/HomeScreen';
+import {
+  createDrawerNavigator,
+  DrawerContentComponentProps,
+} from '@react-navigation/drawer';
 import ProfileScreen from '@/screens/dashboard/profile/ProfileScreen';
 import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,8 +10,15 @@ import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
 import { fontFamily } from '@/theme/fonts';
 import { ROUTES } from './routes';
+import CustomDrawer from './CustomDrawer';
+import DashboardBottomNavigator from './DashboardBottomNavigator';
+import { DRAWER } from '@/utils/constants';
 
 const Drawer = createDrawerNavigator<any>();
+
+const renderDrawerContent = (props: DrawerContentComponentProps) => (
+  <CustomDrawer {...props} />
+);
 
 const getIconRenderer =
   (name: string) =>
@@ -27,15 +36,29 @@ const MainStackNavigator: React.FC = () => {
     () => [
       {
         name: ROUTES.HOME,
-        component: HomeScreen,
-        label: 'Home',
+        component: DashboardBottomNavigator,
+        label: DRAWER.HOME_LABEL,
         iconName: 'home-outline',
       },
       {
-        name: ROUTES.PROFILE,
+        name: ROUTES.FEEDBACK,
         component: ProfileScreen,
-        label: 'Profile',
-        iconName: 'person-outline',
+        label: DRAWER.FEEDBACK_LABEL,
+      },
+      {
+        name: ROUTES.PRIVACY_POLICY,
+        component: ProfileScreen,
+        label: DRAWER.PRIVACY_POLICY_LABEL,
+      },
+      {
+        name: ROUTES.TERMS_CONDITIONS,
+        component: ProfileScreen,
+        label: DRAWER.TERMS_CONDITIONS_LABEL,
+      },
+      {
+        name: ROUTES.ABOUT_US,
+        component: ProfileScreen,
+        label: DRAWER.ABOUT_US_LABEL,
       },
     ],
     [],
@@ -58,6 +81,7 @@ const MainStackNavigator: React.FC = () => {
     <Drawer.Navigator
       initialRouteName={ROUTES.HOME}
       screenOptions={drawerScreenOptions}
+      drawerContent={renderDrawerContent}
     >
       {screens.map(s => (
         <Drawer.Screen
@@ -86,7 +110,7 @@ const styles = StyleSheet.create({
     borderBottomColor: palette.lightGray,
   },
   drawerLabelStyle: {
-    fontFamily: fontFamily.regular,
+    fontFamily: fontFamily.light,
     fontWeight: '700',
     fontSize: moderateScale(15),
     marginLeft: 0,

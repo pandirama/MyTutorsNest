@@ -10,12 +10,17 @@ import {
 import { palette } from '@/theme/palette';
 import { View, Text, TextInput, TextInputProps } from 'react-native';
 import styles from './styles';
+import { scale } from 'react-native-size-matters';
 
 type Props<T extends FieldValues> = TextInputProps & {
   control: Control<T>;
   name: Path<T>;
   label?: string;
   rules?: RegisterOptions<T, Path<T>>;
+  isLeftIcon?: boolean;
+  leftIcon?: React.ReactNode;
+  isLeftLabel?: boolean;
+  leftLabel?: string;
 };
 
 const FormInput = <T extends FieldValues>({
@@ -52,6 +57,10 @@ type OutlinedInputProps = Omit<TextInputProps, 'onBlur'> & {
   value?: string;
   error?: string;
   onBlur?: () => void;
+  isLeftIcon?: boolean;
+  leftIcon?: React.ReactNode;
+  isLeftLabel?: boolean;
+  leftLabel?: string;
 };
 
 const OutlinedInput = ({
@@ -109,28 +118,40 @@ const OutlinedInput = ({
         onPress={() => inputRef.current?.focus()}
       >
         {label && (
-          <Animated.Text numberOfLines={1} style={[styles.label, labelStyle]}>
+          <Animated.Text
+            numberOfLines={1}
+            style={[
+              styles.label,
+              props?.isLeftLabel && { left: scale(40) },
+              labelStyle,
+            ]}
+          >
             {label}
           </Animated.Text>
         )}
-        <TextInput
-          ref={inputRef}
-          style={styles.textInput}
-          value={value}
-          // With a label, hold the placeholder back until the label floats up
-          // so the two don't overlap (matching the outlined-input behaviour).
-          placeholder={!label || floated ? placeholder : undefined}
-          placeholderTextColor={palette.gray}
-          onFocus={e => {
-            setFocused(true);
-            onFocus?.(e);
-          }}
-          onBlur={() => {
-            setFocused(false);
-            onBlur?.();
-          }}
-          {...props}
-        />
+
+        <View style={styles.inputRow}>
+          {props?.isLeftIcon && props.leftIcon}
+          {props?.isLeftLabel && (
+            <Text style={styles.leftLabel}>{props.leftLabel}</Text>
+          )}
+          <TextInput
+            ref={inputRef}
+            style={styles.textInput}
+            value={value}
+            placeholder={!label || floated ? placeholder : undefined}
+            placeholderTextColor={palette.gray}
+            onFocus={e => {
+              setFocused(true);
+              onFocus?.(e);
+            }}
+            onBlur={() => {
+              setFocused(false);
+              onBlur?.();
+            }}
+            {...props}
+          />
+        </View>
       </Pressable>
       {error && <Text style={styles.errorText}>{error}</Text>}
     </View>

@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from '@/redux/store';
 import RootNavigators from '@/navigation/RootNavigator';
 import { PersistGate } from 'redux-persist/integration/react';
+import NetworkBanner from '@/components/NetworkBanner';
 
 if (__DEV__) {
   import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           <PersistGate loading={null} persistor={persistor}>
             <RootNavigators />
           </PersistGate>
+          <NetworkBanner />
         </Provider>
       </SafeAreaView>
     </SafeAreaProvider>
