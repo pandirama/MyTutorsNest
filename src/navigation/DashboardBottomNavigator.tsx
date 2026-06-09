@@ -8,7 +8,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import { moderateScale, scale } from 'react-native-size-matters';
 import HomeScreen from '@/screens/dashboard/home/HomeScreen';
 import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -39,7 +39,7 @@ const DashboardBottomNavigator = () => {
         <TouchableOpacity style={styles.circleButton}>
           <Ionicons
             name="calendar-outline"
-            size={scale(30)}
+            size={scale(28)}
             color={palette.primary}
           />
         </TouchableOpacity>
@@ -78,7 +78,7 @@ const DashboardBottomNavigator = () => {
       id="dashboard-bottom-bar"
       type="DOWN"
       shadowStyle={styles.shadowStyle}
-      height={verticalScale(50)}
+      height={moderateScale(55)}
       width={width}
       bgColor={palette.white}
       initialRouteName="HomeStack"
@@ -88,7 +88,7 @@ const DashboardBottomNavigator = () => {
       style={styles.navigator}
       backBehavior="initialRoute"
       circlePosition="CENTER"
-      circleWidth={scale(60)}
+      circleWidth={moderateScale(60)}
       screenOptions={{ headerShown: false }}
       screenListeners={{}}
       renderCircle={renderCircle}
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     padding: moderateScale(8),
   },
   shadowStyle: {
-    shadowColor: palette.gray,
+    shadowColor: palette.black,
     shadowRadius: 5,
     ...Platform.select({
       ios: {
@@ -137,19 +137,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: palette.white,
-    bottom: verticalScale(25),
+    bottom: moderateScale(30),
+    borderWidth: 1,
+    borderColor: palette.border,
     ...Platform.select({
       ios: {
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 5,
       },
       android: {
-        elevation: 5,
+        elevation: 10,
         shadowOpacity: 10,
         shadowOffset: { width: 3, height: 2 },
       },
     }),
-    shadowColor: palette.gray,
+    shadowColor: palette.black,
     shadowRadius: 3,
   },
   circleButton: {

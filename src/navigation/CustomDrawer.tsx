@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   },
   drawerItemList: {
     flex: 1,
+    marginTop: verticalScale(15),
   },
   closeButton: {
     alignSelf: 'flex-end',
