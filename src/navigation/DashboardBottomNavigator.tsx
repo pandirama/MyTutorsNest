@@ -4,11 +4,10 @@ import {
   Platform,
   TouchableOpacity,
   View,
-  Animated,
   useWindowDimensions,
 } from 'react-native';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
-import { moderateScale, scale } from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 import HomeScreen from '@/screens/dashboard/home/HomeScreen';
 import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -35,15 +34,13 @@ const DashboardBottomNavigator = () => {
 
   const renderCircle = useCallback(
     () => (
-      <Animated.View style={styles.circleButtonWrapper}>
-        <TouchableOpacity style={styles.circleButton}>
+      <TouchableOpacity style={styles.circleButtonWrapper}>
           <Ionicons
             name="calendar-outline"
-            size={scale(28)}
+            size={moderateScale(30)}
             color={palette.primary}
           />
-        </TouchableOpacity>
-      </Animated.View>
+      </TouchableOpacity>
     ),
     [],
   );
@@ -142,8 +139,8 @@ const styles = StyleSheet.create({
     borderColor: palette.border,
     ...Platform.select({
       ios: {
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 5,
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
       },
       android: {
         elevation: 10,
@@ -153,10 +150,6 @@ const styles = StyleSheet.create({
     }),
     shadowColor: palette.black,
     shadowRadius: 3,
-  },
-  circleButton: {
-    flex: 1,
-    justifyContent: 'center',
   },
   tabBarItem: {
     flex: 1,

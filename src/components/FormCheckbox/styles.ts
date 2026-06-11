@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     marginLeft: scale(5),
   },
   checkbox: {
-    width: scale(16),
-    height: scale(16),
+    width: moderateScale(16),
+    height: moderateScale(16),
     borderWidth: moderateScale(1),
     borderColor: palette.black,
     borderRadius: moderateScale(5),

@@ -6,7 +6,7 @@ import {
 import ProfileScreen from '@/screens/dashboard/profile/ProfileScreen';
 import { palette } from '@/theme/palette';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import { moderateScale, scale } from 'react-native-size-matters';
 import { StyleSheet } from 'react-native';
 import { fontFamily } from '@/theme/fonts';
 import { ROUTES } from './routes';
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
     borderBottomColor: palette.lightGray,
   },
   drawerLabelStyle: {
+    // fontFamily: fontFamily.semiBold,
     fontFamily: fontFamily.light,
-    fontWeight: '700',
     fontSize: moderateScale(15),
     marginLeft: 0,
   },
@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
     marginLeft: 0,
   },
   icon: {
-    width: scale(20),
-    height: verticalScale(20),
+    width: moderateScale(20),
+    height: moderateScale(20),
     resizeMode: 'contain',
   },
 });

@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.white,
   },
   iconContainer: {
-    width: scale(35),
+    width: scale(30),
     padding: 5,
   },
   title: {

@@ -52,6 +52,11 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         </View>
       </DrawerContentScrollView>
       <TouchableOpacity style={styles.signOutButton} onPress={handleSignOut}>
+        <Ionicons
+          name="log-out-outline"
+          size={moderateScale(20)}
+          color={palette.black}
+        />
         <Text style={styles.signOutText}>{DRAWER.SIGN_OUT_TEXT}</Text>
       </TouchableOpacity>
       <Text style={styles.versionText}>{DRAWER.APP_VERSION}</Text>
@@ -81,31 +86,29 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: moderateScale(16),
-    fontFamily: fontFamily.bold,
-    fontWeight: '700',
+    fontFamily: fontFamily.extraBold,
     color: palette.black,
   },
   userEmail: {
     fontSize: moderateScale(14),
     color: palette.black,
     fontFamily: fontFamily.semiBold,
-    fontWeight: '500',
   },
   signOutButton: {
-    alignItems: 'flex-start',
-    marginLeft: scale(10),
+    alignItems: 'center',
+    marginLeft: scale(15),
     marginBottom: verticalScale(15),
+    flexDirection: 'row',
   },
   signOutText: {
     fontSize: moderateScale(16),
     fontFamily: fontFamily.bold,
-    fontWeight: '700',
     color: palette.black,
+    marginLeft: scale(5),
   },
   versionText: {
     fontSize: moderateScale(12),
     fontFamily: fontFamily.semiBold,
-    fontWeight: '500',
     color: palette.black,
     marginBottom: verticalScale(35),
     marginLeft: scale(10),
@@ -114,14 +117,13 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     fontSize: moderateScale(28),
-    fontFamily: fontFamily.bold,
-    fontWeight: '700',
+    fontFamily: fontFamily.extraBold,
     color: palette.white,
   },
   avatarCircle: {
-    width: scale(80),
-    height: scale(80),
-    borderRadius: scale(40),
+    width: moderateScale(80),
+    height: moderateScale(80),
+    borderRadius: moderateScale(40),
     backgroundColor: palette.primary,
     alignItems: 'center',
     justifyContent: 'center',

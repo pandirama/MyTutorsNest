@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { verticalScale } from 'react-native-size-matters';
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   backHeader: {
@@ -16,37 +16,37 @@ const styles = StyleSheet.create({
   },
 
   dropdown: {
-    height: 50,
+    height: moderateScale(50),
     borderColor: 'gray',
-    borderWidth: 0.5,
-    borderRadius: 8,
-    paddingHorizontal: 8,
+    borderWidth: moderateScale(0.5),
+    borderRadius: moderateScale(8),
+    paddingHorizontal: scale(8),
   },
   icon: {
-    marginRight: 5,
+    marginRight: scale(5),
   },
   label: {
     position: 'absolute',
     backgroundColor: 'white',
-    left: 22,
-    top: 8,
+    left: scale(22),
+    top: verticalScale(8),
     zIndex: 999,
-    paddingHorizontal: 8,
-    fontSize: 14,
+    paddingHorizontal: scale(8),
+    fontSize: moderateScale(14),
   },
   placeholderStyle: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   selectedTextStyle: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   iconStyle: {
-    width: 20,
-    height: 20,
+    width: moderateScale(20),
+    height: moderateScale(20),
   },
   inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
+    height: moderateScale(40),
+    fontSize: moderateScale(16),
   },
 });
 
