@@ -51,6 +51,12 @@ const HOME_SCREEN = {
   BODY_TEXT: 'Home Screen',
 };
 
+const TAB_TITLES: Record<string, string> = {
+  SubjectsStack: 'Subjects',
+  ChatStack: 'Chat',
+  ProfileStack: 'Profile',
+};
+
 const NETWORK = {
   NO_CONNECTION_TEXT: 'No Internet Connection',
   ANIMATION_DURATION: 300,
@@ -83,6 +89,7 @@ export {
   REGISTER_SCREEN,
   FORGOT_PASSWORD_SCREEN,
   HOME_SCREEN,
+  TAB_TITLES,
   NETWORK,
   DRAWER,
   COUNTRY_OPTIONS,

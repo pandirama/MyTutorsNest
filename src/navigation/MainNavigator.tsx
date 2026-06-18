@@ -13,11 +13,19 @@ import { ROUTES } from './routes';
 import CustomDrawer from './CustomDrawer';
 import DashboardBottomNavigator from './DashboardBottomNavigator';
 import { DRAWER } from '@/utils/constants';
+import MainHeader from '@/components/MainHeader';
 
 const Drawer = createDrawerNavigator<any>();
 
 const renderDrawerContent = (props: DrawerContentComponentProps) => (
   <CustomDrawer {...props} />
+);
+
+const renderHeader = ({ navigation, route, options }: any) => (
+  <MainHeader
+    title={options?.title ?? route?.name}
+    navigation={navigation}
+  />
 );
 
 const getIconRenderer =
@@ -39,6 +47,8 @@ const MainStackNavigator: React.FC = () => {
         component: DashboardBottomNavigator,
         label: DRAWER.HOME_LABEL,
         iconName: 'home-outline',
+        // The bottom navigator renders its own per-tab MainHeader.
+        ownHeader: true,
       },
       {
         name: ROUTES.FEEDBACK,
@@ -66,7 +76,8 @@ const MainStackNavigator: React.FC = () => {
 
   const drawerScreenOptions = useMemo(
     () => ({
-      headerShown: false,
+      headerShown: true,
+      header: renderHeader,
       drawerActiveTintColor: palette.black,
       drawerInactiveTintColor: palette.black,
       drawerActiveBackgroundColor: palette.white,
@@ -89,6 +100,8 @@ const MainStackNavigator: React.FC = () => {
           name={s.name}
           component={s.component}
           options={{
+            title: s.label,
+            headerShown: !s.ownHeader,
             drawerLabel: s.label,
             drawerItemStyle: styles.drawerItemStyle,
             drawerLabelStyle: s.iconName
